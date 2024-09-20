@@ -1,0 +1,2 @@
+make start:
+	rails server
