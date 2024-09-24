@@ -474,7 +474,7 @@
 <div class="container mx-auto p-8 xl:px-0 !p-0" id="about">
   <div class="mx-auto w-full max-w-2xl rounded-2xl p-2">
     <% get_faq.each do |question_answer| %>
-    <div class="mb-5">
+    <div class="mb-5" data-controller="faq">
       <button
         class="dark:bg-trueGray-800 flex w-full items-center justify-between rounded-lg bg-white px-4 py-4 text-left text-lg text-freelancers-dark-text focus:outline-none focus-visible:ring focus-visible:ring-opacity-75"
         id="headlessui-disclosure-button-:R4qlla:"
@@ -482,12 +482,14 @@
         aria-expanded="true"
         data-headlessui-state="open"
         aria-controls="headlessui-disclosure-panel-:R8qlla:"
+        data-faq-target="question"
+        data-action="faq#logSomething"
       >
         <span><%= question_answer[:question] %></span
         ><span
           role="img"
           aria-label="up"
-          class="anticon anticon-up rotate-180 transform h-5 w-5 text-freelancers-dark-text transition-transform duration-300 ease-in"
+          class="anticon anticon-up h-5 w-5 text-freelancers-dark-text transition-transform duration-300 ease-in rotate-0"
           ><svg
             viewBox="64 64 896 896"
             focusable="false"
@@ -503,7 +505,7 @@
         ></span>
       </button>
       <div
-        class="animate-slidein px-4 pb-2 pt-4 text-freelancers-paragraph"
+        class="animate-slidein px-4 pb-2 pt-4 text-freelancers-paragraph hidden"
         id="headlessui-disclosure-panel-:R8qlla:"
         data-headlessui-state="open"
       >

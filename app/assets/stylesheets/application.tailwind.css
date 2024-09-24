@@ -11,3 +11,7 @@
 }
 
 */
+
+.rotate-arrow {
+  @apply rotate-180 transform;
+}
