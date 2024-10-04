@@ -51,11 +51,10 @@
       </ul>
     </div>
     <div class="nav__item mr-3 hidden space-x-4 lg:flex">
-      <a
-        class="rounded-md bg-freelancers-light-orange px-6 py-2 text-freelancers-white-background hover:bg-freelancers-dark-orange md:ml-5"
-        href="/login"
-        >Entrar como candidato</a
-      >
+      <%= link_to 'Entrar como candidato', new_user_session_path,
+      class:"rounded-md bg-freelancers-light-orange px-6 py-2
+      text-freelancers-white-background hover:bg-freelancers-dark-orange
+      md:ml-5" %>
     </div>
   </nav>
 </div>
