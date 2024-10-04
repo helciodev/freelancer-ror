@@ -3,19 +3,14 @@
     class="container relative mx-auto flex flex-wrap items-center justify-between px-8 lg:justify-between xl:px-0"
   >
     <div class="flex w-full flex-wrap items-center justify-between lg:w-auto">
-      <a href="/"
-        ><span
-          ><img
-            alt="Logotipo da freelancer"
-            loading="lazy"
-            width="200"
-            height="200"
-            decoding="async"
-            data-nimg="1"
-            class="w-100"
-            style="color: transparent"
-            src="/assets/logo.svg" /></span></a
-      ><button
+      <%= link_to root_path do %>
+      <span>
+        <%= image_tag "logo.svg", alt: "Logotipo da freelancer", loading:
+        "lazy", width: "200", height: "200" %>
+      </span>
+
+      <% end %>
+      <button
         aria-label="Toggle Menu"
         class="ml-auto rounded-md px-2 py-1 text-freelancers-dark-orange focus:outline-none lg:hidden"
         id="headlessui-disclosure-button-:R4hlla:"
