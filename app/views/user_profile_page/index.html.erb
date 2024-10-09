@@ -1,0 +1,4 @@
+<h1>I am <%= @user.first_name %></h1>
+
+<%= link_to 'logout', destroy_user_session_path, method: :delete,
+data:{turbo_method: 'delete'} %>

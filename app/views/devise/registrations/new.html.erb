@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), data:{controller: 'flatpicker'}) do |f| %> 
 <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="field">
@@ -19,6 +19,17 @@
   <%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true, autocomplete: "email",
   class:'border border-red-500' %>
+</div>
+
+<div class="field">
+  <%= f.label :gender, 'Gênero' %><br />
+  <%= f.select :gender, options_for_select([['Masculino', 'masculino'], ['Feminino', 'feminino'], ['Outro', 'outro']]), class:'border border-red-500' %>
+  
+</div>
+
+<div class="field">
+  <%= f.label :date_of_birth, 'Data de nascimento' %><br />
+  <%= f.datetime_field :date_of_birth, class:'border border-red-500 birth-date' %>
 </div>
 
 <div class="field">

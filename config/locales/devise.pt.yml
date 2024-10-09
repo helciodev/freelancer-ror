@@ -1,4 +1,36 @@
 pt:
+  activerecord:
+    models:
+      user: 'Usuário'
+
+    attributes:
+      user:
+        first_name: 'Primeiro nome'
+        last_name: 'Último nome'
+        email: 'E-mail'
+        password: 'Senha'
+        cellphone: 'Telemóvel'
+
+    errors:
+      models:
+        user:
+          attributes:
+            first_name:
+              blank: 'não pode ficar em branco.'
+              too_short: 'muito curto (mínimo de %{count} caracteres).'
+            last_name:
+              blank: 'não pode ficar em branco.'
+              too_short: 'muito curto (mínimo de %{count} caracteres).'
+            email:
+              blank: 'não pode ficar em branco.'
+              invalid: 'não é um e-mail válido.'
+            password:
+              blank: 'não pode ficar em branco.'
+              too_short: 'muito curto (mínimo de %{count} caracteres).'
+            cellphone:
+              blank: 'não pode ficar em branco.'
+              invalid: 'deve ser um número de telemóvel válido.'
+
   errors:
     messages:
       already_confirmed: 'já foi confirmado.'
