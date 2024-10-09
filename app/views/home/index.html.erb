@@ -528,11 +528,11 @@
       </p>
     </div>
     <div class="w-full flex-shrink-0 text-center lg:w-auto">
-      <a
-        class="mx-auto inline-block rounded-md bg-freelancers-white-background px-7 py-3 text-center text-lg font-medium text-freelancers-dark-text transition-colors duration-75 ease-in hover:bg-freelancers-dark-blue hover:text-white lg:px-10 lg:py-5"
-        href="/login"
-        >Entrar como candidato</a
-      >
+      <%= link_to 'Entrar como candidato', new_user_session_path,
+      class:"rmx-auto inline-block rounded-md bg-freelancers-white-background
+      px-7 py-3 text-center text-lg font-medium text-freelancers-dark-text
+      transition-colors duration-75 ease-in hover:bg-freelancers-dark-blue
+      hover:text-white lg:px-10 lg:py-5" %>
     </div>
   </div>
 </div>

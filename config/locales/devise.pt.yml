@@ -1,0 +1,70 @@
+pt:
+  errors:
+    messages:
+      already_confirmed: 'já foi confirmado.'
+      confirmation_period_expired: 'deve ser confirmado dentro de %{period}, por favor solicite uma nova confirmação.'
+      expired: 'expirado, por favor solicite um novo.'
+      not_found: 'não foi possível encontrar %{authentication_keys}.'
+      not_locked: 'não está bloqueado.'
+      not_saved:
+        one: 'não foi possível salvar %{resource}: 1 erro.'
+        other: 'não foi possível salvar %{resource}: %{count} erros.'
+
+  devise:
+    confirmations:
+      confirmed: 'Sua conta foi confirmada com sucesso.'
+      send_instructions: 'Foi enviado um e-mail contendo instruções de confirmação para o seu endereço.'
+      send_paranoid_instructions: 'Se o seu endereço estiver registrado em nosso sistema, você receberá um e-mail com instruções de confirmação.'
+
+    failure:
+      already_authenticated: 'Você já efetuou o login.'
+      inactive: 'Sua conta ainda não foi ativada.'
+      invalid: 'E-mail ou senha inválidos.'
+      locked: 'Sua conta está bloqueada.'
+      last_attempt: 'Você tem mais uma tentativa antes de sua conta ser bloqueada.'
+      not_found_in_database: 'E-mail ou senha inválidos.'
+      timeout: 'Sua sessão expirou, por favor efetue o login novamente.'
+      unauthenticated: 'Você precisa efetuar login ou se registrar para continuar.'
+      unconfirmed: 'Você precisa confirmar sua conta antes de continuar.'
+
+    mailer:
+      confirmation_instructions:
+        subject: 'Instruções de confirmação de conta'
+      reset_password_instructions:
+        subject: 'Instruções de redefinição de senha'
+      unlock_instructions:
+        subject: 'Instruções de desbloqueio de conta'
+      email_changed:
+        subject: 'Seu e-mail foi alterado'
+      password_change:
+        subject: 'Sua senha foi alterada com sucesso'
+
+    omniauth_callbacks:
+      failure: 'Não foi possível autenticar devido a: %{reason}.'
+      success: 'Autenticado com sucesso por %{kind}.'
+
+    passwords:
+      no_token: 'Token não encontrado ou expirado. Solicite uma nova recuperação de senha.'
+      send_instructions: 'Foi enviado um e-mail contendo instruções de recuperação de senha para o seu endereço.'
+      updated: 'Sua senha foi alterada com sucesso. Agora você está logado.'
+      updated_not_active: 'Sua senha foi alterada com sucesso.'
+
+    registrations:
+      destroyed: 'Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.'
+      signed_up: 'Bem-vindo! Sua conta foi criada com sucesso.'
+      signed_up_but_inactive: 'Foi enviado um e-mail contendo um link de ativação para o endereço cadastrado.'
+      signed_up_but_locked: 'Foi enviado um e-mail contendo um link de ativação para o endereço cadastrado. Sua conta está atualmente bloqueada.'
+      signed_up_but_unconfirmed: 'Foi enviado um e-mail contendo um link de ativação para o endereço cadastrado. Sua conta ainda não está confirmada.'
+      update_needs_confirmation: 'Seu e-mail foi alterado. Você precisa confirmar esse novo e-mail.'
+      updated: 'Sua conta foi atualizada com sucesso.'
+      updated_but_not_signed_in: 'Sua conta foi atualizada com sucesso, porém você não foi logado automaticamente.'
+
+    sessions:
+      signed_in: 'Você efetuou login com sucesso.'
+      signed_out: 'Você saiu com sucesso.'
+      already_signed_out: 'Você já saiu.'
+
+    unlocks:
+      send_instructions: 'Foi enviado um e-mail contendo instruções de desbloqueio de conta para o seu endereço.'
+      send_paranoid_instructions: 'Se o seu endereço estiver registrado em nosso sistema, você receberá um e-mail com instruções de desbloqueio.'
+      unlocked: 'Sua conta foi desbloqueada com sucesso.'

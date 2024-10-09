@@ -68,18 +68,18 @@
       </div>
     <% end %>
     
-    <%= render "devise/shared/links" %>
+    
     
      
+    <div class="text-center text-xs">
+<%= link_to new_user_session_path do %>
+
+<% end %>
+    </div>
       <p class="text-center text-xs">
-        Novo em nossa plataforma?<button
-          type="button"
-          class="ant-btn css-1adbn6x ant-btn-link text-freelancers-light-blue"
-        >
-          <span>Crie sua conta aqui</span>
-        </button>
+        Novo em nossa plataforma? <%= link_to "Crie sua conta aqui", new_user_registration_path, class:"text-freelancers-light-blue" %>
       </p>
-      <div class="Toastify"></div>
+    
     </div>
   </div>
 </section>
