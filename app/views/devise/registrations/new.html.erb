@@ -1,50 +1,127 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), data:{controller: 'flatpicker'}) do |f| %> 
-<%= render "devise/shared/error_messages", resource: resource %>
 
-<div class="field">
-  <%= f.label :first_name, 'Primeiro Nome' %><br />
-  <%= f.text_field :first_name, autofocus: true,
-  class:'border border-red-500' %>
-</div>
-
-<div class="field">
-  <%= f.label :last_name, 'Sobrenome' %><br />
-  <%= f.text_field :last_name, autofocus: true,
-  class:'border border-red-500' %>
-</div>
-
-<div class="field">
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true, autocomplete: "email",
-  class:'border border-red-500' %>
-</div>
-
-<div class="field">
-  <%= f.label :gender, 'Gênero' %><br />
-  <%= f.select :gender, options_for_select([['Masculino', 'masculino'], ['Feminino', 'feminino'], ['Outro', 'outro']]), class:'border border-red-500' %>
+<section
+  class="grid h-screen grid-cols-3 border bg-gray-200 max-md:grid-cols-1"
+>
+  <div class="col-span-2 p-8">
+    <%= link_to root_path do %>
+    <span
+    >
+    
+    <img
+      alt="Logotipo da freelancer"
+      loading="lazy"
+      width="200"
+      height="200"
+      decoding="async"
+      data-nimg="1"
+      class="w-100"
+      src="/assets/logo-extensive.png"
+      style="color: transparent" /></span></a
+>
+    <% end %>
+    <%= image_tag "/assets/sign-up.svg", alt:"Ilustração para a tela de cadastro", class:"mx-auto w-[45%] pt-16 md:mt-0" %>
   
-</div>
+  </div>
+  <div class="h-[100%] bg-white">
+    <div class="mx-12 mt-20 flex flex-col items-center justify-center">
+      <a class="mx-auto mb-10" href="/"
+        ><img
+          alt="Logotipo da freelancer"
+          loading="lazy"
+          width="200"
+          height="200"
+          decoding="async"
+          data-nimg="1"
+          src="/assets/logo.svg"
+          style="color: transparent"
+      /></a>
+      <div class="w-full">
+        <p
+          class="text-oncenter_text-500 mb-2 mt-4 text-[18px] font-medium text-freelancers-dark-text"
+        >
+          Seja bem-vindo!
+        </p>
+        <p class="mb-5 text-[14px] text-freelancers-paragraph">
+          Por favor, entre na sua conta para um mundo de oportunidades 🚀🚀
+        </p>
+      </div>
+      <!-- coloque o formulário -->
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data:{controller: 'flatpicker'}) do |f| %> 
+      <%= render "devise/shared/error_messages", resource: resource %>
+      
+      <div class="field">
+        <%= f.label :first_name, 'Primeiro Nome' %>
+        <%= f.text_field :first_name, autofocus: true,
+        class:'border border-red-500' %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :last_name, 'Sobrenome' %>
+        <%= f.text_field :last_name, autofocus: true,
+        class:'border border-red-500' %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",
+        class:'border border-red-500' %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :cellphone, 'Telemóvel' %>
+        <%= f.telephone_field :cellphone, autofocus: true, autocomplete: "email",
+        class:'border border-red-500' %>
+      </div>
 
-<div class="field">
-  <%= f.label :date_of_birth, 'Data de nascimento' %><br />
-  <%= f.datetime_field :date_of_birth, class:'border border-red-500 birth-date' %>
-</div>
+      <div class="field">
+        <%= f.label :gender, 'Gênero' %>
+        <%= f.select :gender, options_for_select([['Masculino', 'masculino'], ['Feminino', 'feminino'], ['Outro', 'outro']]), class:'border border-red-500' %>
+        
+      </div>
+      
+      <div class="field">
+        <%= f.label :date_of_birth, 'Data de nascimento' %>
+        <%= f.datetime_field :date_of_birth, class:'border border-red-500 birth-date' %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :password, 'Palavra Passe' %> <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> caracteres no mínimo)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class:'border
+        border-red-500' %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",
+        class:'border border-red-500' %>
+      </div>
+      
+      <div class="actions"><%= f.submit "Criar conta" %></div>
+      <% end %>
 
-<div class="field">
-  <%= f.label :password, 'Palavra Passe' %> <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
-  <% end %><br />
-  <%= f.password_field :password, autocomplete: "new-password", class:'border
-  border-red-500' %>
-</div>
+    
+    
+    
+     
+    <div class="text-center text-xs">
+<%= link_to new_user_session_path do %>
 
-<div class="field">
-  <%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, autocomplete: "new-password",
-  class:'border border-red-500' %>
-</div>
+<% end %>
+    </div>
+      <p class="text-center text-xs">
+        Já possui uma conta faça o login? <%= link_to "Login", new_user_session_path, class:"text-freelancers-light-blue" %>
+      </p>
+    
+    </div>
+  </div>
+</section>
 
-<div class="actions"><%= f.submit "Sign up" %></div>
-<% end %> <%= render "devise/shared/links" %>
+
+
+
+
+
+

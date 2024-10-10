@@ -15,3 +15,17 @@
 .rotate-arrow {
   @apply rotate-180 transform;
 }
+form .field {
+  @apply flex flex-col;
+}
+form .field input {
+  @apply rounded-lg border border-gray-200 outline-none px-2 py-1 mt-3 mb-3 focus:border-gray-400 focus:border-2 transition-all duration-75 ease-in;
+}
+
+form .field label {
+  @apply mt-2 mb-5 text-freelancers-dark-text font-medium;
+}
+
+form input[type='submit'] {
+  @apply text-freelancers-light-blue hover:text-freelancers-dark-blue transition-colors cursor-pointer mb-3;
+}
