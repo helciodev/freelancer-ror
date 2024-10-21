@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-     confirmations: 'users/confirmations'
+     confirmations: 'users/confirmations', registrations: 'users/registrations'
   }
 
+  resources :profiles, only: [:new, :create, :edit, :update]
   resources :user_profile_page, only: [:index], path: 'perfil_usuario', as: 'profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,4 +13,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+
 end

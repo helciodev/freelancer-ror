@@ -76,13 +76,22 @@
 
       <div class="field">
         <%= f.label :gender, 'Gênero' %>
-        <%= f.select :gender, options_for_select([['Masculino', 'masculino'], ['Feminino', 'feminino'], ['Outro', 'outro']]), class:'border border-red-500' %>
+        <%= f.select :gender, options_for_select([['Masculino', 'masculino'], ['Feminino', 'feminino'], ['Outro', 'outro']]), prompt: 'Selecione gênero', class:'border border-red-500' %>
         
       </div>
       
       <div class="field">
         <%= f.label :date_of_birth, 'Data de nascimento' %>
         <%= f.datetime_field :date_of_birth, class:'border border-red-500 birth-date' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :nationality %>
+        <%= f.select :nationality, options_for_select([
+          ['Angolan', 'AO'],
+          ['Brazilian', 'BR'],
+          ['Portuguese', 'PT']
+        ], resource.nationality), prompt: 'Select nationality', class: 'border border-red-500' %>
       </div>
       
       <div class="field">
