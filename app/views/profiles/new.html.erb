@@ -1,99 +1,66 @@
 <section class="grid grid-cols-3 border bg-gray-200 max-md:grid-cols-1">
-  <div class="col-span-2 p-8">
-    <%= image_tag "profile-banner.svg", alt: "User profile banner", class:
-    "mx-auto w-full max-w-2xl" %>
-  </div>
-  <div class="bg-white">
-    <div class="mx-12 mt-20 flex flex-col items-center justify-center">
-      <%= image_tag @user.profile_picture.attached? ? @user.profile_picture :
-      "default-avatar.svg", alt: "User profile picture", class: "mb-6 h-32 w-32
-      rounded-full object-cover" %>
-      <h1 class="mb-6 text-2xl font-bold text-freelancers-dark-text">
-        <%= "#{@user.first_name} #{@user.last_name}" %>
-      </h1>
-
-      <%= form_with(model: @profile, local: true, class: "w-full space-y-4") do
-      |f| %> <% if @user.errors.any? %>
-      <div class="error-messages text-red-500">
-        <h2>
-          <%= pluralize(@user.errors.count, "error") %> prohibited this profile
-          from being saved:
-        </h2>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
-
-      <div>
-        <%= f.label :current_position, "Posição Atual", class: "block text-sm
-        font-medium text-gray-700" %> <%= f.text_field :current_position, class:
-        "mt-1 block w-full rounded-md border-gray-300 shadow-sm
-        focus:border-indigo-300 focus:ring focus:ring-indigo-200
-        focus:ring-opacity-50" %>
-      </div>
-
-      <div>
-        <%= f.label :academic_title, "Título Acadêmico", class: "block text-sm
-        font-medium text-gray-700" %> <%= f.text_field :academic_title, class:
-        "mt-1 block w-full rounded-md border-gray-300 shadow-sm
-        focus:border-indigo-300 focus:ring focus:ring-indigo-200
-        focus:ring-opacity-50" %>
-      </div>
-
-      <div>
-        <%= f.label :areas_of_interest, "Áreas de Interesse", class: "block
-        text-sm font-medium text-gray-700" %> <%= f.text_area
-        :areas_of_interest, class: "mt-1 block w-full rounded-md border-gray-300
-        shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200
-        focus:ring-opacity-50" %>
-      </div>
-
-      <div>
-        <%= f.label :years_of_experience, "Anos de Experiência", class: "block
-        text-sm font-medium text-gray-700" %> <%= f.number_field
-        :years_of_experience, class: "mt-1 block w-full rounded-md
-        border-gray-300 shadow-sm focus:border-indigo-300 focus:ring
-        focus:ring-indigo-200 focus:ring-opacity-50" %>
-      </div>
-
-      <div>
-        <%= f.label :link_to_resume, "Link para Currículo", class: "block
-        text-sm font-medium text-gray-700" %> <%= f.url_field :link_to_resume,
-        class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm
-        focus:border-indigo-300 focus:ring focus:ring-indigo-200
-        focus:ring-opacity-50" %>
-      </div>
-
-      <div>
-        <%= f.label :idioms, "Idiomas", class: "block text-sm font-medium
-        text-gray-700" %> <%= f.select :idioms,
-        options_for_select([['Português', 'pt'], ['Inglês', 'en'], ['Espanhol',
-        'es'], ['Francês', 'fr']], @user.idioms), { include_blank: false }, {
-        multiple: true, class: "mt-1 block w-full rounded-md border-gray-300
-        shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200
-        focus:ring-opacity-50" } %>
-      </div>
-
-      <div>
-        <%= f.label :profile_picture, "Foto de Perfil", class: "block text-sm
-        font-medium text-gray-700" %> <%= f.file_field :profile_picture, class:
-        "mt-1 block w-full" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Atualizar Perfil", class: "w-full px-4 py-2
-        bg-freelancers-light-blue text-white rounded-md hover:bg-blue-600
-        focus:outline-none focus:ring-2 focus:ring-blue-500
-        focus:ring-opacity-50" %>
-      </div>
-      <% end %>
-
-      <p class="mt-6 text-center text-xs text-freelancers-paragraph">
-        Mantenha seu perfil atualizado para melhores oportunidades!
-      </p>
+    <div class="col-span-2 p-8">
+      <%= image_tag "/assets/profile-banner.png", alt: "Profile banner", class: "w-full" %>
     </div>
-  </div>
-</section>
+    <div class="bg-white">
+      <div class="mx-12 mt-10 flex flex-col items-center justify-center">
+        <h2 class="text-xl font-bold text-freelancers-dark-text">Criar Novo Perfil</h2>
+        
+        <%= form_for @profile, url: profiles_path, html: { multipart: true }, method: :post do |f| %>
+          <div class="field mb-4">
+            <%= f.label :current_position, "Cargo Atual" %>
+            <%= f.text_field :current_position, class: "border border-gray-300 w-full p-2" %>
+          </div>
+  
+          <div class="field mb-4">
+            <%= f.label :academic_title, "Título Acadêmico" %>
+            <%= f.text_field :academic_title, class: "border border-gray-300 w-full p-2" %>
+          </div>
+
+          <div class="field mb-4">
+            <%= f.label :years_of_experience, "Anos de Experiência" %>
+            <%= f.number_field :years_of_experience, class: "border border-gray-300 w-full p-2" %>
+          </div>
+  
+          <div class="field mb-4">
+            <%= f.label :link_to_resume, "Link para o Currículo" %>
+            <%= f.url_field :link_to_resume, class: "border border-gray-300 w-full p-2" %>
+          </div>
+  
+          <div class="field mb-4">
+            <%= f.label :idioms, "Idiomas" %>
+            <div class="flex flex-col space-y-2">
+              <% ["espanhol", "ingles", "português", "francês"].each do |language| %>
+                <label>
+                  <%= check_box_tag "profile[idioms][]", language, @profile.idiomas&.include?(language) %> 
+                  <%= language.capitalize %>
+                </label>
+              <% end %>
+            </div>
+          </div>
+          
+          <div class="field mb-4">
+            <%= f.label :areas_of_interest, "Áreas de Interesse" %>
+            <div class="flex flex-col space-y-2">
+              <% AreaOfInterest.all.each do |area| %>
+                <label>
+                  <%= check_box_tag "profile[areas_of_interest][]", area.name, @profile.areas_of_interest&.include?(area.name) %> 
+                  <%= area.name %>
+                </label>
+              <% end %>
+            </div>
+          </div>
+          </div>
+  
+          <div class="field mb-4">
+            <%= f.label :profile_picture, "Foto de Perfil" %>
+            <%= f.file_field :profile_picture, class: "border border-gray-300 w-full p-2" %>
+          </div>
+  
+          <div class="actions text-center mt-8">
+            <%= f.submit "Criar Perfil", class: "bg-freelancers-light-blue text-white px-4 py-2 rounded" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
