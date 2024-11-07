@@ -32,7 +32,7 @@
             <div class="flex flex-col space-y-2">
               <% ["espanhol", "ingles", "português", "francês"].each do |language| %>
                 <label>
-                  <%= check_box_tag "profile[idioms][]", language, @profile.idiomas&.include?(language) %> 
+                  <%= check_box_tag "profile[idioms][]", language, @profile.idioms&.include?(language) %> 
                   <%= language.capitalize %>
                 </label>
               <% end %>
@@ -44,7 +44,7 @@
             <div class="flex flex-col space-y-2">
               <% AreaOfInterest.all.each do |area| %>
                 <label>
-                  <%= check_box_tag "profile[areas_of_interest][]", area.name, @profile.areas_of_interest&.include?(area.name) %> 
+                  <%= check_box_tag "profile[area_of_interest_ids][]", area.id, @profile.areas_of_interest.include?(area) %> 
                   <%= area.name %>
                 </label>
               <% end %>
