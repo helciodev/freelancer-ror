@@ -1,4 +1,262 @@
-<h1>I am <%= @user.first_name %></h1>
+<% if @show_profile_incomplete_modal %>
+<!-- Modal code as provided above -->
+<div
+  id="incompleteProfileModal"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+>
+  <!-- Modal Content -->
+  <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-semibold text-gray-900">Complete Your Profile</h2>
+      <button
+        type="button"
+        onclick="closeModal()"
+        class="text-gray-500 hover:text-gray-700 focus:outline-none"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="mb-4 text-gray-700">
+      <p>
+        Seu perfil só tem <%= @user.profile_completion_percentage %>% completo.
+        Por favor clique no botão abaixo para completar o seu perfil.
+      </p>
+    </div>
+    <div class="flex justify-start space-x-2">
+      <%= link_to 'Completar Perfil', new_profile_path,
+      class:'bg-freelancers-dark-blue text-freelancers-white-background p-3
+      rounded-lg' %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'logout', destroy_user_session_path, method: :delete,
-data:{turbo_method: 'delete'} %>
+<script>
+  // Automatically show the modal if the profile is incomplete
+  document.addEventListener('DOMContentLoaded', function () {
+    document
+      .getElementById('incompleteProfileModal')
+      .classList.remove('hidden');
+  });
+
+  // Function to close the modal
+  function closeModal() {
+    document.getElementById('incompleteProfileModal').classList.add('hidden');
+  }
+</script>
+<% end %>
+
+<div class="container mx-auto p-4 max-w-4xl">
+  <div class="b shadow-md rounded-lg overflow-hidden">
+    <div
+      class="bg-freelancers-dark-blue text-freelancers-white-background p-6 flex items-center space-x-4"
+    >
+      <%= image_tag user_profile_image_or_generic_image, class:"w-32 h-32
+      rounded-full border-4 border-freelancers-white-background",
+      alt:"#{@user.first_name} #{@user.last_name}" %>
+
+      <div>
+        <h1 class="text-3xl font-bold"><%= user_name %></h1>
+
+        <p class="text-xl text-freelancers-light-orange">
+          Senior Software Developer
+        </p>
+        <p class="text-lg">Ph.D. in Computer Science</p>
+      </div>
+    </div>
+    <div class="p-6">
+      <section class="mb-6">
+        <h2
+          class="text-2xl font-bold text-freelancers-paragraph border-b-2 border-primary pb-2 mb-4"
+        >
+          Informações Pessoais
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-secondary">
+          <div>
+            <span class="font-bold text-freelancers-paragraph"
+              >Nacionalidade:</span
+            >
+
+            <p class="text-freelancers-text-gray">
+              <%= @user.profile&.nationality || 'Angolana' %>
+            </p>
+          </div>
+          <div>
+            <span class="font-bold text-freelancers-paragraph"
+              >Data de Nascimento:</span
+            >
+            <p class="text-freelancers-text-gray">
+              <%= @user.profile&.date_of_birth || 'Angolana' %>
+            </p>
+          </div>
+          <div>
+            <span class="font-bold text-freelancers-paragraph">
+              Years of Experience:</span
+            >
+            <p class="text-freelancers-text-gray">10</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-6">
+        <h2
+          class="text-2xl font-bold text-freelancers-paragraph border-b-2 border-primary pb-2 mb-4"
+        >
+          Informações de Contacto
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-secondary">
+          <div>
+            <span class="font-bold text-freelancers-paragraph">Email:</span>
+            <p class="text-freelancers-text-gray">john.doe@example.com</p>
+          </div>
+          <div>
+            <span class="font-bold text-freelancers-paragraph"
+              >Contacto Telefônico:</span
+            >
+            <p class="text-freelancers-text-gray">+1 (555) 123-4567</p>
+          </div>
+          <div>
+            <span class="font-bold text-freelancers-paragraph">Endereço:</span>
+            <p class="text-freelancers-text-gray">
+              123 Tech Street, San Francisco, CA 94122, USA
+            </p>
+          </div>
+          <div>
+            <span class="font-bold text-freelancers-paragraph">LinkedIn:</span>
+            <a
+              href="https://www.linkedin.com/in/johndoe"
+              class="text-primary hover:underline text-freelancers-mid-blue"
+              >johndoe</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-6">
+        <h2
+          class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4 text-freelancers-paragraph"
+        >
+          Resumo Profissional
+        </h2>
+        <p class="text-secondary text-freelancers-text-gray">
+          Senior Software Developer with 10 years of experience in web
+          development and cloud computing. Specialized in building scalable
+          applications using JavaScript, React, and Node.js. Last position held:
+          Lead Developer at TechCorp Inc.
+        </p>
+      </section>
+
+      <section class="mb-6">
+        <h2
+          class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4 text-freelancers-paragraph"
+        >
+          Áreas de Interesse
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="bg-primary text-freelancers-text-gray px-3 py-1 rounded-full text-sm"
+            >Artificial Intelligence</span
+          >
+          <span
+            class="bg-primary text-freelancers-text-gray px-3 py-1 rounded-full text-sm"
+            >Cloud Computing</span
+          >
+          <span
+            class="bg-primary text-freelancers-text-gray px-3 py-1 rounded-full text-sm"
+            >Web Development</span
+          >
+          <span
+            class="bg-primary text-freelancers-text-gray px-3 py-1 rounded-full text-sm"
+            >Data Science</span
+          >
+          <span
+            class="bg-primary text-freelancers-text-gray px-3 py-1 rounded-full text-sm"
+            >Cybersecurity</span
+          >
+        </div>
+      </section>
+
+      <section class="mb-6">
+        <h2
+          class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4 text-freelancers-paragraph"
+        >
+          Línguas Faladas
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="bg-primary text-freelancers-text-gray px-3 py-1 rounded-full text-sm"
+            >English (Native)</span
+          >
+          <span
+            class="bg-primary text-freelancers-text-gray px-3 py-1 rounded-full text-sm"
+            >Spanish (Fluent)</span
+          >
+          <span
+            class="bg-primary text-freelancers-text-gray px-3 py-1 rounded-full text-sm"
+            >French (Intermediate)</span
+          >
+        </div>
+      </section>
+
+      <section class="mb-6">
+        <h2
+          class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4"
+        >
+          Courses
+        </h2>
+        <ul class="space-y-4">
+          <li class="bg-gray-100 p-3 rounded-lg border-l-4 border-accent">
+            <div class="font-bold text-primary">Advanced Machine Learning</div>
+            <div class="text-sm text-secondary">Stanford University | 2022</div>
+          </li>
+          <li class="bg-gray-100 p-3 rounded-lg border-l-4 border-accent">
+            <div class="font-bold text-primary">
+              Cloud Architecture with AWS
+            </div>
+            <div class="text-sm text-secondary">
+              AWS Certified Solutions Architect | 2021
+            </div>
+          </li>
+          <li class="bg-gray-100 p-3 rounded-lg border-l-4 border-accent">
+            <div class="font-bold text-primary">Full Stack Web Development</div>
+            <div class="text-sm text-secondary">FreeCodeCamp | 2020</div>
+          </li>
+          <li class="bg-gray-100 p-3 rounded-lg border-l-4 border-accent">
+            <div class="font-bold text-primary">
+              Data Structures and Algorithms
+            </div>
+            <div class="text-sm text-secondary">MIT OpenCourseWare | 2019</div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2
+          class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4"
+        >
+          Additional Information
+        </h2>
+        <div class="text-secondary">
+          <span class="font-bold text-freelancers-paragraph"
+            >Curriculum Vitae:</span
+          >
+          <%= link_to 'Baixar CV', 'https://www.google.pt/',
+          class:'text-freelancers-mid-blue hover:underline ml-2',
+          target:'_blank' %>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

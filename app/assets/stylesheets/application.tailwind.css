@@ -23,7 +23,7 @@ form .field input {
 }
 
 form .field label {
-  @apply mt-2 mb-5 text-freelancers-dark-text font-medium;
+  @apply text-freelancers-dark-text font-medium;
 }
 
 form input[type='submit'] {

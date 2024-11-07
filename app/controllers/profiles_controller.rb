@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(profile_params)
     if @profile.save
-      redirect_to user_dashboard_path, notice: "Profile successfully created."
+      redirect_to user_dashboard_path, notice: "Perfil criado com sucesso."
     else
       render :new
     end
@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
     if @profile.update(profile_params)
-      redirect_to user_dashboard_path, notice: "Profile successfully updated."
+      redirect_to user_dashboard_path, notice: "Perfil actualizado com sucesso."
     else
       render :edit
     end

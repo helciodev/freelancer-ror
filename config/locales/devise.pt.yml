@@ -22,11 +22,14 @@ pt:
               blank: 'não pode ficar em branco.'
               too_short: 'muito curto (mínimo de %{count} caracteres).'
             email:
+              taken: 'Já está em uso.'
               blank: 'não pode ficar em branco.'
               invalid: 'não é um e-mail válido.'
             password:
               blank: 'não pode ficar em branco.'
               too_short: 'muito curto (mínimo de %{count} caracteres).'
+            password_confirmation:
+              confirmation: 'a senha de confirmação não corresponde'
             cellphone:
               blank: 'não pode ficar em branco.'
               invalid: 'deve ser um número de telemóvel válido.'
@@ -38,6 +41,8 @@ pt:
       expired: 'expirado, por favor solicite um novo.'
       not_found: 'não foi possível encontrar %{authentication_keys}.'
       not_locked: 'não está bloqueado.'
+      taken: 'Já está em uso.'
+      confirmation: 'não corresponde à senha'
       not_saved:
         one: 'não foi possível salvar %{resource}: 1 erro.'
         other: 'não foi possível salvar %{resource}: %{count} erros.'
