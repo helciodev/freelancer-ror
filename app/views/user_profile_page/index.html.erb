@@ -71,7 +71,7 @@
         <h1 class="text-3xl font-bold"><%= user_name %></h1>
 
         <p class="text-xl text-freelancers-light-orange">
-          Senior Software Developer
+          <%= @user&.profile.current_position || 'Sua posição actual' %>
         </p>
         <p class="text-lg">Ph.D. in Computer Science</p>
       </div>
@@ -90,7 +90,7 @@
             >
 
             <p class="text-freelancers-text-gray">
-              <%= @user.profile&.nationality || 'Angolana' %>
+              <%= @user.nationality || 'Angolana' %>
             </p>
           </div>
           <div>

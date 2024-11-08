@@ -7,8 +7,9 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = current_user.build_profile(profile_params)
+
     if @profile.save
-      redirect_to user_dashboard_path, notice: "Perfil criado com sucesso."
+      redirect_to profile_index_path, notice: "Perfil criado com sucesso."
     else
       render :new
     end
@@ -21,7 +22,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
     if @profile.update(profile_params)
-      redirect_to user_dashboard_path, notice: "Perfil actualizado com sucesso."
+      redirect_to profile_index_path, notice: "Perfil actualizado com sucesso."
     else
       render :edit
     end
@@ -30,6 +31,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:current_position, :academic_title, :years_of_experience, :link_to_resume, :idioms, :profile_picture, area_of_interest_ids: [])
+    params.require(:profile).permit(:current_position, :academic_title, :years_of_experience, :link_to_resume, :idioms, :profile_picture, areas_of_interest_ids: [])
   end
 end

@@ -6,7 +6,7 @@
       <div class="mx-12 mt-10 flex flex-col items-center justify-center">
         <h2 class="text-xl font-bold text-freelancers-dark-text">Criar Novo Perfil</h2>
         
-        <%= form_for @profile, url: profiles_path, html: { multipart: true }, method: :post do |f| %>
+        <%= form_with(model: @profile) do |f| %>
           <div class="field mb-4">
             <%= f.label :current_position, "Cargo Atual" %>
             <%= f.text_field :current_position, class: "border border-gray-300 w-full p-2" %>
@@ -40,14 +40,12 @@
           </div>
           
           <div class="field mb-4">
-            <%= f.label :areas_of_interest, "Áreas de Interesse" %>
+           <label for="">
+            Areas de Interesse
+           </label>
             <div class="flex flex-col space-y-2">
-              <% AreaOfInterest.all.each do |area| %>
-                <label>
-                  <%= check_box_tag "profile[area_of_interest_ids][]", area.id, @profile.areas_of_interest.include?(area) %> 
-                  <%= area.name %>
-                </label>
-              <% end %>
+              <%= f.collection_check_boxes :areas_of_interest_ids, AreaOfInterest.all, :id, :name %>
+
             </div>
           </div>
           </div>
@@ -58,7 +56,7 @@
           </div>
   
           <div class="actions text-center mt-8">
-            <%= f.submit "Criar Perfil", class: "bg-freelancers-light-blue text-white px-4 py-2 rounded" %>
+            <%= f.submit "Criar Perfil", class: "bg-freelancers-light-blue text-white px-4 py-2 rounded cursor:pointer" %>
           </div>
         <% end %>
       </div>
