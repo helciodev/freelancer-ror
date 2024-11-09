@@ -71,9 +71,16 @@
         <h1 class="text-3xl font-bold"><%= user_name %></h1>
 
         <p class="text-xl text-freelancers-light-orange">
-          <%= @user&.profile.current_position || 'Sua posição actual' %>
+          <%= 'Sua posição actual' %>
         </p>
         <p class="text-lg">Ph.D. in Computer Science</p>
+      </div>
+      <div>
+        <%= "is profile incomplete = #{@show_profile_incomplete_modal} " %> <%=
+        link_to 'logout', destroy_user_session_path,
+        data:{turbo_method:'delete'} %> <%= link_to 'Completar Perfil',
+        new_profile_path, class:'bg-freelancers-dark-blue
+        text-freelancers-white-background p-3 rounded-lg' %>
       </div>
     </div>
     <div class="p-6">
@@ -89,17 +96,13 @@
               >Nacionalidade:</span
             >
 
-            <p class="text-freelancers-text-gray">
-              <%= @user.nationality || 'Angolana' %>
-            </p>
+            <p class="text-freelancers-text-gray"><%= @user.nationality %></p>
           </div>
           <div>
             <span class="font-bold text-freelancers-paragraph"
               >Data de Nascimento:</span
             >
-            <p class="text-freelancers-text-gray">
-              <%= @user.profile&.date_of_birth || 'Angolana' %>
-            </p>
+            <p class="text-freelancers-text-gray"><%= @user.date_of_birth %></p>
           </div>
           <div>
             <span class="font-bold text-freelancers-paragraph">
@@ -119,13 +122,13 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-secondary">
           <div>
             <span class="font-bold text-freelancers-paragraph">Email:</span>
-            <p class="text-freelancers-text-gray">john.doe@example.com</p>
+            <p class="text-freelancers-text-gray"><%= @user.email %></p>
           </div>
           <div>
             <span class="font-bold text-freelancers-paragraph"
               >Contacto Telefônico:</span
             >
-            <p class="text-freelancers-text-gray">+1 (555) 123-4567</p>
+            <p class="text-freelancers-text-gray"><%= @user.cellphone %></p>
           </div>
           <div>
             <span class="font-bold text-freelancers-paragraph">Endereço:</span>
@@ -214,7 +217,7 @@
         <h2
           class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4"
         >
-          Courses
+          Cursos
         </h2>
         <ul class="space-y-4">
           <li class="bg-gray-100 p-3 rounded-lg border-l-4 border-accent">
@@ -246,7 +249,7 @@
         <h2
           class="text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4"
         >
-          Additional Information
+          Informação adicional
         </h2>
         <div class="text-secondary">
           <span class="font-bold text-freelancers-paragraph"

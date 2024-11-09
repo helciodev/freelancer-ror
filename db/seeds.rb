@@ -8,4 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-AreaOfInterest.create([{ name: 'Advogado' }, { name: 'Contabilista' }, { name: 'Financeiro' }, {name: 'RH' }, {name: 'Formador' }, {name: 'Coach' }, {name: 'Designer' }, {name: 'Comunic]ólogo' },{name: 'Gestor' }, {name: 'Analista de Crédito' } ])
+professions  = [{ name: 'Advogado' }, { name: 'Contabilista' }, { name: 'Financeiro' }, {name: 'RH' }, {name: 'Formador' }, {name: 'Coach' }, {name: 'Designer' }, {name: 'Comunic]ólogo' },{name: 'Gestor' }, {name: 'Analista de Crédito' } ]
+
+
+professions.each do |profession|
+
+  AreaOfInterest.find_or_create_by(profession)
+end
+# AreaOfInterest.create([{ name: 'Advogado' }, { name: 'Contabilista' }, { name: 'Financeiro' }, {name: 'RH' }, {name: 'Formador' }, {name: 'Coach' }, {name: 'Designer' }, {name: 'Comunic]ólogo' },{name: 'Gestor' }, {name: 'Analista de Crédito' } ])

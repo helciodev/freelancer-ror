@@ -14,7 +14,7 @@ class User < ApplicationRecord
   def profile_completion_percentage
     # Fields from User and Profile to check for completion
     user_fields = %i[first_name last_name email cellphone gender date_of_birth nationality profile_pic]
-    profile_fields = %i[current_position academic_title areas_of_interest years_of_experience link_to_resume idioms] # Add other profile attributes as needed
+    profile_fields = %i[current_position academic_title areas_of_interest years_of_experience link_to_resume idioms municipy province street professional_resume] # Add other profile attributes as needed
 
     # Count completed fields in User
     completed_user_fields = user_fields.count { |field| self.send(field).present? }
