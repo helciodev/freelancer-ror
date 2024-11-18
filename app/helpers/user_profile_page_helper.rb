@@ -1,8 +1,17 @@
 module UserProfilePageHelper
 
- def user_profile_image_or_generic_image
+ def user_profile_image_or_generic_image(user)
 
-  @user.profile_pic.present? && @user.profile_pic || 'user.png'
+  # @user.profile_pic.present? && @user.profile_pic || 'user.png'
+
+   if user.profile_picture.attached?
+     user.profile_picture
+
+   else
+
+    "user.png"
+   end
+
 
  end
 

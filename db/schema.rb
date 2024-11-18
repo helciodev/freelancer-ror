@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_09_162050) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_18_191057) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,7 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_09_162050) do
     t.string "municipy"
     t.string "province"
     t.string "street"
-    t.text "professional_resume"
+    t.string "linked_In_link"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -88,7 +88,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_09_162050) do
     t.string "gender"
     t.date "date_of_birth"
     t.string "nationality"
-    t.string "profile_pic"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -97,5 +96,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_09_162050) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "profile_areas", "area_of_interests"
   add_foreign_key "profile_areas", "profiles"
-  add_foreign_key "profiles", "users"
+  add_foreign_key "profiles", "users", on_delete: :cascade
 end

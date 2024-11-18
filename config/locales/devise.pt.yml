@@ -33,6 +33,8 @@ pt:
             cellphone:
               blank: 'não pode ficar em branco.'
               invalid: 'deve ser um número de telemóvel válido.'
+            current_password:
+              blank: 'não pode ficar em branco'
 
   errors:
     messages:

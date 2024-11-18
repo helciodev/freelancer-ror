@@ -26,12 +26,13 @@
             <%= f.label :link_to_resume, "Link para o Currículo" %>
             <%= f.url_field :link_to_resume, class: "border border-gray-300 w-full p-2" %>
           </div>
-  
+          
           <div class="field mb-4">
-            <%= f.label :professional_resume, "Resumo profissional" %>
-            <%= f.text_area :professional_resume, class: "border border-gray-300 w-full p-2", placeholder:'', rows:5  %>
+            <%= f.label :linked_In_link, "LinkedIn" %>
+            <%= f.url_field :linked_In_link, class: "border border-gray-300 w-full p-2" %>
           </div>
 
+     
           <div class="field mb-4">
             <%= f.label :municipy, "Município" %>
             <%= f.text_field :municipy, class: "border border-gray-300 w-full p-2", placeholder:'Belas' %>
@@ -47,33 +48,23 @@
             <%= f.text_field :street, class: "border border-gray-300 w-full p-2", placeholder:'Rua, número, complemento' %>
           </div>
 
-          <div class="field mb-4">
-            <%= f.label :idioms, "Idiomas" %>
-            <div class="flex items-center space-x-3 bg-gray-100 p-1 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex-wrap">
-              <% ["espanhol", "ingles", "português", "francês"].each do |language| %>
-                <label>
-                  <%= check_box_tag "profile[idioms][]", language, @profile.idioms&.include?(language) %> 
-                  <%= language.capitalize %>
-                </label>
-              <% end %>
-            </div>
-          </div>
+        
           
           <div class="field mb-4">
            <label for="">
-            Areas de Interesse
+            Áreas Em Que Trabalha
            </label>
             <div class=" flex items-center space-x-3 bg-gray-100 p-1 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex-wrap">
               <%= f.collection_check_boxes :areas_of_interest_ids, AreaOfInterest.all, :id, :name %>
 
             </div>
           </div>
-          </div>
+          
   
         
   
-          <div class="actions text-center mt-8">
-            <%= f.submit "Adicionar Dados", class: "bg-freelancers-light-blue text-white px-4 py-2 rounded cursor-pointer" %>
+          <div class="text-center mt-8 text-white">
+            <%= f.submit "Adicionar Dados", class:"bg-freelancers-light-blue text-white px-4 py-2 rounded cursor-pointer hover:bg-freelancers-dark-blue hover:text-white" %>
           </div>
         <% end %>
       </div>

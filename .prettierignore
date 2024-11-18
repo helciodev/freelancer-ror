@@ -2,3 +2,5 @@ app/views/layouts/application.html.erb
 app/views/devise/registrations/new.html.erb
 app/views/profiles/new.html.erb
 app/views/home/_navbar.html.erb
+app/views/user_profile_page/index.html.erb
+app/views/devise/registrations/edit.html.erb

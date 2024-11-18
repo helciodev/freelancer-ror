@@ -67,11 +67,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # Permit additional fields during sign up
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :cellphone, :gender, :date_of_birth, :nationality])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :cellphone, :gender, :date_of_birth, :nationality, :profile_picture])
   end
 
   # Permit additional fields during account update
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :cellphone, :gender, :date_of_birth])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :cellphone, :gender, :date_of_birth, :profile_picture])
   end
 end

@@ -27,5 +27,5 @@ form .field label {
 }
 
 form input[type='submit'] {
-  @apply text-freelancers-light-blue hover:text-freelancers-dark-blue transition-colors cursor-pointer mb-3;
+  @apply text-white transition-colors cursor-pointer mb-3;
 }

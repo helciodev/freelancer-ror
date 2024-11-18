@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_one_attached :profile_pic
+  has_one_attached :profile_picture
   has_one :profile, dependent: :destroy
   validates :first_name, :last_name, presence: true
   validates :cellphone, format: {
@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   def profile_completion_percentage
     # Fields from User and Profile to check for completion
-    user_fields = %i[first_name last_name email cellphone gender date_of_birth nationality profile_pic]
+    user_fields = %i[first_name last_name email cellphone gender date_of_birth nationality profile_picture]
     profile_fields = %i[current_position academic_title areas_of_interest years_of_experience link_to_resume idioms municipy province street professional_resume] # Add other profile attributes as needed
 
     # Count completed fields in User
@@ -42,8 +42,8 @@ class User < ApplicationRecord
   private
 
   def image_size_validation
-    if profile_pic.attached? && profile_pic.blob.byte_size > 1.megabyte
-      errors.add(:image, "is too large. Please upload an image less than 1MB")
+    if profile_picture.attached? && profile_picture.blob.byte_size > 1.megabyte
+      errors.add(:profile_picture, "Demasiado grande. Por favor, faça o upload de uma imagem de até 1MB")
     end
   end
 
