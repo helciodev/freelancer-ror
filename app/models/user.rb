@@ -11,33 +11,6 @@ class User < ApplicationRecord
 
   before_save :image_size_validation
 
-  def profile_completion_percentage
-    # Fields from User and Profile to check for completion
-    user_fields = %i[first_name last_name email cellphone gender date_of_birth nationality profile_picture]
-    profile_fields = %i[current_position academic_title areas_of_interest years_of_experience link_to_resume idioms municipy province street professional_resume] # Add other profile attributes as needed
-
-    # Count completed fields in User
-    completed_user_fields = user_fields.count { |field| self.send(field).present? }
-
-    # Count completed fields in Profile, if it exists
-    completed_profile_fields = if profile
-                                  profile_fields.count do |field|
-                                    if field == :areas_of_interest
-                                      profile.areas_of_interest.any?
-                                    else
-                                      profile.send(field).present?
-                                    end
-                                  end
-                                else
-                                  0
-                                end
-
-    # Calculate total completion percentage
-    total_fields = user_fields.size + profile_fields.size
-    total_completed_fields = completed_user_fields + completed_profile_fields
-
-    (total_completed_fields.to_f / total_fields * 100).round
-  end
 
   private
 

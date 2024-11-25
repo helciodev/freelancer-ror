@@ -3,7 +3,6 @@ Rails.application.routes.draw do
      confirmations: 'users/confirmations', registrations: 'users/registrations'
   }
 
-  resources :profiles, only: [:new, :create, :edit, :update]
   resources :user_profile_page, only: [:index], path: 'perfil_usuario', as: 'profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
